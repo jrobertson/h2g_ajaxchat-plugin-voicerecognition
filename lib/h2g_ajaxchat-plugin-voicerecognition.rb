@@ -4,8 +4,10 @@
 
 # description: Used with the h2g_ajaxchat gem to facilitate voice input to text.
 
+# note: The AjaxChatPlugin is available from the h2g_ajaxchat gem
 
-class AjaxChatPluginVoiceRecognition
+
+class AjaxChatPluginVoiceRecognition < AjaxChatPlugin
 
   def initialize(settings)
     @lang = settings[:lang] || 'en-GB'
@@ -75,4 +77,3 @@ class AjaxChatPluginVoiceRecognition
 EOF
   end
 end
-
