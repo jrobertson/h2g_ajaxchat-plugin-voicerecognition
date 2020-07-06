@@ -9,21 +9,22 @@
 
 class AjaxChatPluginVoiceRecognition < AjaxChatPlugin
 
-  def initialize(settings)
+  def initialize(ac, settings, debug: false)
+    super(ac, settings, debug: debug)
     @lang = settings[:lang] || 'en-GB'
   end
 
-  def apply(ac)
+  def apply()
 
-    html = ac.views[:index].html
+    html = @ac.views[:index].html
 
     a = html.lines
     r = a.grep /<input name="usermsg"/
     i = a.index(r.first)
     a2 = a.insert i+1, "<button id='start-button'>Start Listening</button>\n"
-    ac.views[:index].html = a2.join
+    @ac.views[:index].html = a2.join
 
-    ac.views[:index].js = ac.views[:index].js + js()
+    @ac.views[:index].js = @ac.views[:index].js + js()
 
   end
 
